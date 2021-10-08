@@ -1,5 +1,10 @@
 @main def tictactoe: Unit =
-  println("Welcome to tictactoe")
-  println(f(4))
+  println("Welcome to TicTacToe")
+  println(mesh)
 
-def f(x: Int) = x + 1
+val eol = sys.props("line.separator")
+def bar(cellwidth: Int = 3, cells: Int = 3) =
+  (("+" + "-" * cellwidth) * cells) + "+" + eol
+def cells(cellwidth: Int = 3, cells: Int = 3) =
+  ("|" + " " * cellwidth) * cells + "|" + eol
+val mesh = (bar() + cells) * 3 + bar()

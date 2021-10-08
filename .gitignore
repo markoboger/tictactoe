@@ -17,6 +17,9 @@ project/project/
 project/target/
 target/
 
+# coursier
+null/
+
 # intellij idea
 *.log
 *.iml
