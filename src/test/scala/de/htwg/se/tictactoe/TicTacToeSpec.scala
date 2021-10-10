@@ -1,7 +1,9 @@
+package de.htwg.se.tictactoe
+
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
-class TicTacToeSpec extends AnyWordSpec:
+class TicTacToeSpec extends AnyWordSpec {
   "TicTacToe" should {
     "have a bar as String of form '+---+---+---+'" in {
       bar() should be("+---+---+---+" + eol)
@@ -26,3 +28,4 @@ class TicTacToeSpec extends AnyWordSpec:
         mesh(1, 1) should be("+-+" + eol + "| |" + eol + "+-+" + eol)
       }
   }
+}
