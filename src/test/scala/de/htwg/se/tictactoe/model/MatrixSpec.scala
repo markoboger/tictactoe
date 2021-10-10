@@ -4,7 +4,7 @@ import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
 class MatrixSpec extends AnyWordSpec {
-  "A Matrix is a tailor-made immutable data type that contains a two-dimentional Vector of Cells. A Matrix" when {
+  "A Matrix is a tailor-made immutable data type that contains a two-dimentional Vector of something. A Matrix" when {
     "empty " should {
       "be created by using a dimention and a sample cell" in {
         val matrix = new Matrix[String](2, "x")
