@@ -1,23 +1,28 @@
-case class Matrix[T](rows: Vector[Vector[T]]) {
-  def this(size: Int, filling: T) =
-    this(Vector.tabulate(size, size) { (row, col) =>
-      filling
-    })
+1 + 2
 
-  val size: Int = rows.size
+def f(x: Int) = x + 1
+f(8)
 
-  def cell(row: Int, col: Int): T = rows(row)(col)
+val name = "Marko"
+name
 
-  def fill(filling: T): Matrix[T] =
-    copy(Vector.tabulate(size, size) { (row, col) =>
-      filling
-    })
+case class Player(name: String)
+val player = Player("Marko")
+player.name
+val playerList = List(player)
 
-  def replaceCell(row: Int, col: Int, cell: T): Matrix[T] =
-    copy(rows.updated(row, rows(row).updated(col, cell)))
-}
+val cells = Vector(Vector("x", "o", "x"), Vector(), Vector())
+cells(0)(1)
 
 enum Stone:
-  case X, O
+  case X, O, Empty
 
-val m = new Matrix(3, Stone.X)
+case class Matrix(rows: Vector[Vector[Stone]]):
+  def cell(row: Int, col: Int) = rows(row)(col)
+  def fill(filling: Stone): Matrix = copy(Vector.tabulate(3, 3) { (row, col) => filling })
+  def replaceCell(row: Int, col: Int, cell: Stone) = copy(rows.updated(row, rows(row).updated(col, cell)))
+
+val m = Matrix(Vector(Vector(Stone.X, Stone.O, Stone.X), Vector(), Vector()))
+m.cell(0, 1)
+val m2 = m.fill(Stone.Empty)
+m2.replaceCell(1, 1, Stone.X)
