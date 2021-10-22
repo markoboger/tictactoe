@@ -9,6 +9,9 @@ project/metals.sbt
 # vs code
 .vscode
 
+#java
+*.class
+
 # scala 3
 .tasty
 
@@ -35,5 +38,3 @@ null/
 .scala_dependencies
 .cache-main
 
-#general
-*.class
