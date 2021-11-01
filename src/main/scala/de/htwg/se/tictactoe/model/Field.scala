@@ -10,3 +10,4 @@ case class Field(matrix: Matrix[Stone]):
   def mesh(cellWidth: Int = 3) =
     (0 until size).map(cells(_, cellWidth)).mkString(bar(cellWidth, size), bar(cellWidth, size), bar(cellWidth, size))
   override def toString = mesh()
+  def put(stone: Stone, x: Int, y: Int) = copy(matrix.replaceCell(x, y, stone))
