@@ -63,5 +63,29 @@ class FieldSpec extends AnyWordSpec {
           field2.mesh(1) should be("+-+-+" + eol + "|O|O|" + eol + "+-+-+" + eol + "|O|O|" + eol + "+-+-+" + eol)
         }
     }
+    "filled with Empty" should {
+      var field = new Field(3, Stone.Empty)
+      "be empty initially" in {
+        field.toString should be(("""#+---+---+---+
+          #|   |   |   |
+          #+---+---+---+
+          #|   |   |   |
+          #+---+---+---+
+          #|   |   |   |
+          #+---+---+---+
+          #""").stripMargin('#'))
+      }
+      "have an X and O after two moves" in {
+        field.put(Stone.X, 0, 0).put(Stone.O, 1, 1).toString should be(("""#+---+---+---+
+          #| X |   |   |
+          #+---+---+---+
+          #|   | O |   |
+          #+---+---+---+
+          #|   |   |   |
+          #+---+---+---+
+          #""").stripMargin('#'))
+      }
+    }
   }
+
 }
