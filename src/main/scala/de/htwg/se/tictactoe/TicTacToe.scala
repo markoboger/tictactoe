@@ -8,7 +8,7 @@ import scala.io.StdIn.readLine
 
 @main def run: Unit =
   println("Welcome to TicTacToe")
-  var field = new Field(3, Stone.Empty)
+  val field = new Field(3, Stone.Empty)
   println(field.toString)
   getInputAndPrintLoop(field)
 
