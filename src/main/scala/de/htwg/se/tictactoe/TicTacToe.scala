@@ -1,15 +1,10 @@
 package de.htwg.se.tictactoe
 
-val eol = sys.props("line.separator")
-def bar(cellWidth: Int = 3, cellNum: Int = 3) = (("+" + "-" * cellWidth) * cellNum) + "+" + eol
-def cells(cellWidth: Int = 3, cellNum: Int = 3) = ("|" + " " * cellWidth) * cellNum + "|" + eol
-def mesh(cellWidth: Int = 3, cellNum: Int = 3) = (bar(cellWidth, cellNum) + cells(cellWidth, cellNum)) * cellNum + bar(cellWidth, cellNum)
-
-enum Stone:
-  case X, O
+import de.htwg.se.tictactoe.model.Stone
+import de.htwg.se.tictactoe.model.Matrix
+import de.htwg.se.tictactoe.model.Field
 
 @main def run: Unit =
   println("Welcome to TicTacToe")
-  println(mesh())
-  println(Stone.X)
-  println(Stone.O)
+  val field = new Field(3, Stone.Empty)
+  println(field.toString)

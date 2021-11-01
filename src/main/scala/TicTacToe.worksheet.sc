@@ -26,3 +26,6 @@ val m = Matrix(Vector(Vector(Stone.X, Stone.O, Stone.X), Vector(), Vector()))
 m.cell(0, 1)
 val m2 = m.fill(Stone.Empty)
 m2.replaceCell(1, 1, Stone.X)
+
+val v = Vector(1, 2, 3)
+v.map(_.toString).map(" " + _ + " ").mkString("|", "|", "|")
