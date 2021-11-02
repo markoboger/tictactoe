@@ -1,7 +1,7 @@
 package de.htwg.se.tictactoe.model
 
-import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
+import org.scalatest.wordspec.AnyWordSpec
 
 class FieldSpec extends AnyWordSpec {
   "A TicTacToe Field" when {

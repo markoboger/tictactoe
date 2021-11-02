@@ -3,7 +3,6 @@ package aview
 
 import controller.Controller
 import model.Stone
-
 import scala.io.StdIn.readLine
 
 class TUI(controller: Controller):

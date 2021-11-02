@@ -1,10 +1,10 @@
 package de.htwg.se.tictactoe
 
-import controller.Controller
 import aview.TUI
-import model.Stone
-import model.Matrix
+import controller.Controller
 import model.Field
+import model.Matrix
+import model.Stone
 
 @main def run: Unit =
   println("Welcome to TicTacToe")
