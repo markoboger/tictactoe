@@ -14,7 +14,6 @@ class MatrixSpec extends AnyWordSpec {
         val testMatrix = Matrix(Vector(Vector("x")))
         testMatrix.size should be(1)
       }
-
     }
     "filled" should {
       val matrix = new Matrix[String](2, "x")
@@ -32,5 +31,4 @@ class MatrixSpec extends AnyWordSpec {
       }
     }
   }
-
 }
