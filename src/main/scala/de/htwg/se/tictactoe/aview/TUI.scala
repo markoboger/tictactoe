@@ -13,7 +13,7 @@ class TUI(controller: Controller) extends Observer:
     println(controller.field.toString)
     getInputAndPrintLoop()
 
-  override def update = ???
+  override def update = println(controller.field.toString)
 
   def getInputAndPrintLoop(): Unit =
     val input = readLine
@@ -30,6 +30,5 @@ class TUI(controller: Controller) extends Observer:
         val x = chars(1).toString.toInt
         val y = chars(2).toString.toInt
         controller.doAndPublish(controller.put, Move(stone, x, y))
-        println(controller.toString)
         getInputAndPrintLoop()
       }
