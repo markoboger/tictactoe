@@ -2,11 +2,14 @@ package de.htwg.se.tictactoe
 package controller
 
 import model.Field
+import model.Move
 import model.Stone
 import util.Observable
 
 case class Controller(var field: Field) extends Observable:
-  def put(stone: Stone, x: Int, y: Int) =
-    field = field.put(stone, x, y)
+  def doAndPublish(doThis: Move => Field, move: Move) =
+    field = doThis(move)
     notifyObservers
+  def put(move: Move) =
+    field.put(move.stone, move.x, move.y)
   override def toString = field.toString

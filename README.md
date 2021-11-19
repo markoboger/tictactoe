@@ -1,8 +1,7 @@
-## sbt project compiled with Scala 3
+## TicTacToe with Scala 3
 
-### Usage
+[![Coverage Status](https://coveralls.io/repos/github/markoboger/tictactoe/badge.svg?branch=main)](https://coveralls.io/github/markoboger/tictactoe?branch=main)
 
-This is a normal sbt project. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
+This project is developed as an example for the lecture Software Engineering at HTWGKonstanz. You can compile code with `sbt compile`, run it with `sbt run`, and `sbt console` will start a Scala 3 REPL.
 
-For more information on the sbt-dotty plugin, see the
-[scala3-example-project](https://github.com/scala/scala3-example-project/blob/main/README.md).
+
