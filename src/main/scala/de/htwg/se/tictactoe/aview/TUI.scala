@@ -16,9 +16,14 @@ class TUI(controller: Controller) extends Observer:
   override def update = println(controller.field.toString)
 
   def getInputAndPrintLoop(): Unit =
-    val input = readLine
+    analyseInput(readLine) match
+      case None       =>
+      case Some(move) => controller.doAndPublish(controller.put, move)
+    getInputAndPrintLoop()
+
+  def analyseInput(input: String): Option[Move] =
     input match
-      case "q" =>
+      case "q" => None
       case _ => {
         val chars = input.toCharArray
         val stone = chars(0) match
@@ -29,6 +34,5 @@ class TUI(controller: Controller) extends Observer:
           case _   => Stone.Empty
         val x = chars(1).toString.toInt
         val y = chars(2).toString.toInt
-        controller.doAndPublish(controller.put, Move(stone, x, y))
-        getInputAndPrintLoop()
+        Some(Move(stone, x, y))
       }
