@@ -15,5 +15,8 @@ class TuiSpec extends AnyWordSpec {
     "recognize the input x12 as move of stone x to field (1,2)" in {
       tui.analyseInput("x12") should be(Some(Move(Stone.X, 1, 2)))
     }
+    "recognize the input o00 as move of stone O to field (0,0)" in {
+      tui.analyseInput("o00") should be(Some(Move(Stone.O, 0, 0)))
+    }
   }
 }

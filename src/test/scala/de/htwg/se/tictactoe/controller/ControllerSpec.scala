@@ -26,5 +26,14 @@ class ControllerSpec extends AnyWordSpec {
       controller.doAndPublish(controller.put, Move(Stone.X, 1, 2))
       testObserver.bing should be(true)
     }
+    "undo and redo a move" in {
+      var field = controller.field
+      field = controller.put(Move(Stone.X, 1, 2))
+      field.get(1, 2) should be(Stone.X)
+      field = controller.undo
+      field.get(1, 2) should be(Stone.Empty)
+      field = controller.redo
+      field.get(1, 2) should be(Stone.X)
+    }
   }
 }

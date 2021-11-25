@@ -11,19 +11,21 @@ class TUI(controller: Controller) extends Observer:
   controller.add(this)
   def run =
     println(controller.field.toString)
-    getInputAndPrintLoop()
+    inputLoop()
 
   override def update = println(controller.field.toString)
 
-  def getInputAndPrintLoop(): Unit =
+  def inputLoop(): Unit =
     analyseInput(readLine) match
       case None       =>
       case Some(move) => controller.doAndPublish(controller.put, move)
-    getInputAndPrintLoop()
+    inputLoop()
 
   def analyseInput(input: String): Option[Move] =
     input match
       case "q" => None
+      case "z" => controller.doAndPublish(controller.redo); None
+      case "y" => controller.doAndPublish(controller.undo); None
       case _ => {
         val chars = input.toCharArray
         val stone = chars(0) match
