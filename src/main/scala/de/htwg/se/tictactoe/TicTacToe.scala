@@ -1,5 +1,6 @@
 package de.htwg.se.tictactoe
 
+import aview.GUI
 import aview.TUI
 import controller.Controller
 import model.Field
@@ -10,5 +11,7 @@ import model.Stone
   println("Welcome to TicTacToe")
   val field = new Field(3, Stone.Empty)
   val controller = Controller(field)
+  val gui = GUI(controller)
+  gui.run
   val tui = TUI(controller)
   tui.run
