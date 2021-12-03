@@ -12,14 +12,15 @@ import scala.io.StdIn.readLine
 // import scalafx.Includes._
 import util.Observer
 
-class GUI(controller: Controller) extends Observer: //extends JFXApp3 with Observer:
+class GUI(controller: Controller) extends Observer: // extends JFXApp3 with Observer:
   controller.add(this)
   def run =
     println("GUI starting to run...")
 
   override def update = println("GUI updated")
 
-// override def start(): Unit = {
+//  override
+  def start(): Unit = {
 //   stage = new JFXApp3.PrimaryStage {
 //     title.value = "Hello Stage"
 //     width = 600
@@ -35,4 +36,4 @@ class GUI(controller: Controller) extends Observer: //extends JFXApp3 with Obser
 //       }
 //     }
 //   }
-// }
+  }
