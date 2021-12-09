@@ -14,6 +14,6 @@ import model.Stone
   val controller = Controller(field)
 //  val gui = GUI(controller)
 //  gui.run
-  val swingGui = new SwingGui
+  val swingGui = new SwingGui(controller)
   val tui = TUI(controller)
   tui.run
