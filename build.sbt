@@ -9,6 +9,7 @@ lazy val root = project
     crossScalaVersions ++= Seq("2.13.5", "3.0.2"),
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.10",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test",
+    libraryDependencies += "org.scalafx" %% "scalafx" % "16.0.0-R24",
     libraryDependencies ++= {
       // Determine OS version of JavaFX binaries
       lazy val osName = System.getProperty("os.name") match {
@@ -18,7 +19,7 @@ lazy val root = project
         case _                            => throw new Exception("Unknown platform!")
       }
       Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-        .map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
+        .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
     },
     libraryDependencies += ("org.scala-lang.modules" %% "scala-swing" % "3.0.0").cross(CrossVersion.for3Use2_13),
     jacocoCoverallsServiceName := "github-actions",
