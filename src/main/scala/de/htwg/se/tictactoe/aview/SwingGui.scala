@@ -2,13 +2,14 @@ package de.htwg.se.tictactoe
 package aview
 
 import controller.Controller
-import util.Observer
-import model.Stone
 import model.Move
+import model.Stone
 import scala.swing._
 import scala.swing.event._
+import util.Event
+import util.Observer
 
-class SwingGui(controller:Controller) extends Frame with Observer:
+class SwingGui(controller: Controller) extends Frame with Observer:
   controller.add(this)
   title = "TicTacToe"
   menuBar = new MenuBar {
@@ -19,24 +20,26 @@ class SwingGui(controller:Controller) extends Frame with Observer:
     }
   }
   contents = new BorderPanel {
-    add( new Label("Welcome to TicTacToe"), BorderPanel.Position.North)
-    add( new CellPanel(2,2) , BorderPanel.Position.Center)
+    add(new Label("Welcome to TicTacToe"), BorderPanel.Position.North)
+    add(new CellPanel(2, 2), BorderPanel.Position.Center)
   }
   pack()
   centerOnScreen()
   open()
 
-  def update: Unit = ()
+  def update(e: Event): Unit = e match
+    case Event.Quit => this.dispose
+    case Event.Move => repaint
 
-  class CellPanel(x:Int, y:Int) extends GridPanel(x,y):
-    List((0,0,"X"), (0,1,"O"), (1,0,""), (1,1,"")).foreach(t => contents += new CellButton(t._1,t._2,t._3))
+  class CellPanel(x: Int, y: Int) extends GridPanel(x, y):
+    List((0, 0, "X"), (0, 1, "O"), (1, 0, ""), (1, 1, "")).foreach(t => contents += new CellButton(t._1, t._2, t._3))
 
-    def button(stone:String) = new Button(stone)
+    def button(stone: String) = new Button(stone)
 
-  class CellButton(x:Int, y:Int, stone:String) extends Button(stone):
+  class CellButton(x: Int, y: Int, stone: String) extends Button(stone):
     listenTo(mouse.clicks)
     reactions += {
-      case MouseClicked(src,pt,mod,clicks, props) => {
-        controller.doAndPublish(controller.put,Move(Stone.X, x,y))
+      case MouseClicked(src, pt, mod, clicks, props) => {
+        controller.doAndPublish(controller.put, Move(Stone.X, x, y))
       }
     }

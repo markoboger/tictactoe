@@ -10,18 +10,19 @@ import scalafx.scene.paint.Color._
 import scalafx.scene.shape.Rectangle
 import scalafx.scene.Scene
 import scalafx.Includes._
+import util.Event
 import util.Observer
 
-class GUI(controller: Controller) extends JFXApp3 with Observer:
-  controller.add(this)
-  def run =
-    println("GUI starting to run...")
+object FxGui extends JFXApp3 with Observer:
 
-  override def update = println("GUI updated")
+  override def update(e: Event) =
+    e match
+      case Event.Quit => stopApp()
+      case Event.Move => this.start()
 
-  override def start(): Unit = {
+  override def start() = {
     stage = new JFXApp3.PrimaryStage {
-      title.value = "Hello Stage"
+      title.value = "TicTacToe"
       width = 600
       height = 450
       scene = new Scene {

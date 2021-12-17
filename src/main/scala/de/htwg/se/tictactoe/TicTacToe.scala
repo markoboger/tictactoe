@@ -1,6 +1,6 @@
 package de.htwg.se.tictactoe
 
-import aview.GUI
+import aview.FxGui
 import aview.SwingGui
 import aview.TUI
 import controller.Controller
@@ -12,8 +12,8 @@ import model.Stone
   println("Welcome to TicTacToe")
   val field = new Field(3, Stone.Empty)
   val controller = Controller(field)
-  val gui = new GUI(controller) //.main(Array())
-//  gui.run
+  //controller.add(FxGui)
+  //FxGui.start()
   val swingGui = new SwingGui(controller)
   val tui = TUI(controller)
   tui.run
