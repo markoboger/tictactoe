@@ -7,9 +7,9 @@ import model.Stone
 import util.Observable
 
 case class Controller(var field: Field) extends Observable:
-  def doAndPublish(doThis: Move => Field, move: Move) =
+  def doAndPublish(doThis: Move => Field, move: Move): Unit =
     field = doThis(move)
     notifyObservers
-  def put(move: Move) =
+  def put(move: Move): Field =
     field.put(move.stone, move.x, move.y)
   override def toString = field.toString
