@@ -6,7 +6,7 @@ def cells(cellWidth: Int = 3, cellNum: Int = 3) = ("|" + " " * cellWidth) * cell
 def mesh(cellWidth: Int = 3, cellNum: Int = 3) = (bar(cellWidth, cellNum) + cells(cellWidth, cellNum)) * cellNum + bar(cellWidth, cellNum)
 
 enum Stone:
-  case X, O
+  case X, O, Y
 
 @main def run: Unit =
   println("Welcome to TicTacToe")
