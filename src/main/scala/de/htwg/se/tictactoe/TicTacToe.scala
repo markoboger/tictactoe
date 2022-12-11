@@ -12,8 +12,7 @@ import model.Stone
   println("Welcome to TicTacToe")
   val field = new Field(3, Stone.Empty)
   val controller = Controller(field)
-  //controller.add(FxGui)
-  //FxGui.start()
-  val swingGui = new SwingGui(controller)
+  (new FxGui(controller)).main(Array())
+  //val swingGui = new SwingGui(controller)
   val tui = TUI(controller)
   tui.run

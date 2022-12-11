@@ -1,6 +1,7 @@
 package de.htwg.se.tictactoe
 package controller
 
+import de.htwg.se.tictactoe.util.Event
 import model.Field
 import model.Move
 import model.Stone
@@ -20,7 +21,7 @@ class ControllerSpec extends AnyWordSpec {
       class TestObserver(controller: Controller) extends Observer:
         controller.add(this)
         var bing = false
-        def update = bing = true
+        def update(e: Event) = bing = true
       val testObserver = TestObserver(controller)
       testObserver.bing should be(false)
       controller.doAndPublish(controller.put, Move(Stone.X, 1, 2))
