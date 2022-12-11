@@ -10,6 +10,7 @@ import util.Event
 import util.Observer
 
 class SwingGui(controller: Controller) extends Frame with Observer:
+  def cells = new CellPanel(3, 3)
   controller.add(this)
   title = "TicTacToe"
   menuBar = new MenuBar {
@@ -19,27 +20,34 @@ class SwingGui(controller: Controller) extends Frame with Observer:
       })
     }
   }
-  contents = new BorderPanel {
-    add(new Label("Welcome to TicTacToe"), BorderPanel.Position.North)
-    add(new CellPanel(2, 2), BorderPanel.Position.Center)
-  }
+  contents = updateContents
   pack()
   centerOnScreen()
   open()
 
+  def updateContents = {
+    new BorderPanel {
+      add(new Label("Player: " + controller.PlayerState.player), BorderPanel.Position.North)
+      add(cells, BorderPanel.Position.Center)
+    }
+  }
+
   def update(e: Event): Unit = e match
     case Event.Quit => this.dispose
-    case Event.Move => repaint
+    case Event.Move => contents = updateContents; repaint
 
   class CellPanel(x: Int, y: Int) extends GridPanel(x, y):
-    List((0, 0, "X"), (0, 1, "O"), (1, 0, ""), (1, 1, "")).foreach(t => contents += new CellButton(t._1, t._2, t._3))
+    (for (
+      x <- 0 to 2;
+      y <- 0 to 2
+    ) yield (x, y, controller.get(x, y))).foreach(t => contents += new CellButton(t._1, t._2, t._3))
 
-    def button(stone: String) = new Button(stone)
+  def button(stone: String) = new Button(stone)
 
   class CellButton(x: Int, y: Int, stone: String) extends Button(stone):
     listenTo(mouse.clicks)
     reactions += {
       case MouseClicked(src, pt, mod, clicks, props) => {
-        controller.doAndPublish(controller.put, Move(Stone.X, x, y))
+        controller.doAndPublish(controller.put, Move(controller.PlayerState.stone, x, y))
       }
     }
