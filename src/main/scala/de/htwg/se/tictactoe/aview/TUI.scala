@@ -15,6 +15,7 @@ class TUI(controller: Controller) extends Observer:
   override def update = ???
 
   def getInputAndPrintLoop(): Unit =
+    println("Enter your move (<Stone><x><y>, eg. x02, q to quit):")
     val input = readLine
     input match
       case "q" =>
