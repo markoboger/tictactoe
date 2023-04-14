@@ -13,6 +13,7 @@ import scala.io.StdIn.readLine
   getInputAndPrintLoop(field)
 
 def getInputAndPrintLoop(field: Field): Unit =
+  println("Enter your move (<Stone><x><y>, eg. x02, q to quit):")
   val input = readLine
   parseInput(input) match
     case None => field
