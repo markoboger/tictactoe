@@ -1,4 +1,4 @@
-val scala3Version = "3.0.2"
+val scala3Version = "3.2.2"
 val ScalatestVersion = "3.2.8"
 
 lazy val root = project
@@ -10,3 +10,6 @@ lazy val root = project
     libraryDependencies += "org.scalactic" %% "scalactic" % "3.2.10",
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.10" % "test"
   )
+
+
+
