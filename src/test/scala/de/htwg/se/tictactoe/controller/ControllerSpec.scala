@@ -6,6 +6,7 @@ import model.Move
 import model.Stone
 import org.scalatest.matchers.should.Matchers._
 import org.scalatest.wordspec.AnyWordSpec
+import util.Event
 import util.Observer
 
 class ControllerSpec extends AnyWordSpec {
@@ -20,7 +21,7 @@ class ControllerSpec extends AnyWordSpec {
       class TestObserver(controller: Controller) extends Observer:
         controller.add(this)
         var bing = false
-        def update = bing = true
+        def update(e: Event) = bing = true
       val testObserver = TestObserver(controller)
       testObserver.bing should be(false)
       controller.doAndPublish(controller.put, Move(Stone.X, 1, 2))
