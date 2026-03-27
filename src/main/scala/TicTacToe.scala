@@ -4,5 +4,5 @@ def cells(cellWidth: Int = 3, cellNum: Int = 3) = ("|" + " " * cellWidth) * cell
 def mesh(cellWidth: Int = 3, cellNum: Int = 3) = (bar(cellWidth, cellNum) + cells(cellWidth, cellNum)) * cellNum + bar(cellWidth, cellNum)
 
 @main def run: Unit =
-  println("Welcome to TicTacToe")
+  println("Welcome to  TicTacToe")
   println(mesh())
