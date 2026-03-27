@@ -17,3 +17,4 @@ import model.Stone
   val swingGui = new SwingGui(controller)
   val tui = TUI(controller)
   tui.run
+  
